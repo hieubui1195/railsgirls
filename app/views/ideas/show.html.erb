@@ -1,3 +1,4 @@
+<% content_for :ideas_class, "active" %>
 <div class="row idea-content">
     <div class="">
         
@@ -15,8 +16,8 @@
             <div class="action-group pull-right">
                 <ul>
                     <li>
-                        <span class="glyphicon glyphicon-arrow-left"></span>
-                        <%= link_to 'Back', ideas_path, class: "action-title" %>
+                        <span class="glyphicon glyphicon-list"></span>
+                        <%= link_to 'All Ideas', ideas_path, class: "action-title" %>
                     </li>
                     <li>
                         <span class="glyphicon glyphicon-pencil">
@@ -54,7 +55,6 @@
                       <h4 class="media-heading user_name"><%= comment.user_name %></h4>
                       <%= comment.body %>
                       
-                      <p><small><a href="">Like</a> - <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
                     </div> 
                 </div>
             <% end %>
