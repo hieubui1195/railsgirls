@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hieubui
+  api_key: '662255863962761'
+  api_secret: ROgQ_nVpjbp-QI_LPmZ1QMmzqy0
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hieubui
+  api_key: '662255863962761'
+  api_secret: ROgQ_nVpjbp-QI_LPmZ1QMmzqy0
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hieubui
+  api_key: '662255863962761'
+  api_secret: ROgQ_nVpjbp-QI_LPmZ1QMmzqy0
+  enhance_image_tag: true
+  static_image_support: false

@@ -1,26 +1,68 @@
-<div class="row">
-    <div class="col-md-offset-2 col-md-offset-8">
-        <p id="notice"><%= notice %></p>
-        <div class="col-md-3">
-              <%= image_tag(@idea.picture_url, width: 150, class: "img img-reponsive") if @idea.picture.present? %>
+<div class="row idea-content">
+    <div class="">
+        
+        <div class="col-md-12">
+            <h2>
+              <%= @idea.name %>
+            </h2>
+        </div>
+        
+        <div class="col-md-3 img-box">
+            <%= image_tag(@idea.picture_url, width: '100%') if @idea.picture.present? %>
         </div>
         
         <div class="col-md-9">
-            <p>
-              <strong>Name:</strong>
-              <%= @idea.name %>
-            </p>
-            
-            <p>
-              <strong>Description:</strong>
-              <%= @idea.description %>
-            </p>
+            <div class="action-group pull-right">
+                <ul>
+                    <li>
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        <%= link_to 'Back', ideas_path, class: "action-title" %>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-pencil">
+                        </span><%= link_to 'Edit', edit_idea_path(@idea), class: "action-title" %>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-left">
+                <h4>
+                  <strong><%= @idea.sub_content %></strong>
+                </h4>
+                <article>
+                    <%= @idea.description %>
+                </article>
+            </div>
         </div>
-    </div>
-    <div class="col-md-offset-2 col-md-offset-8">
-        <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-primary" %>
-        <%= link_to 'Back', ideas_path, class: "btn btn-warning" %>
     </div>
 </div>
 
-
+<div class="row">
+    <div class="col-md-6">
+        <div class="page-header">
+            <h3 style="border-bottom: 1px solid #000000">
+                <small class="pull-right"><%= @comments.count %> comments</small> Comments
+            </h3>
+        </div>
+        <div class="comments-list">
+            <% @comments.each do |comment| %>
+                <div class="media">
+                    <div class="media-left">
+                        <%= image_tag(comment.picture_url, width: 40) if comment.picture.present? %>
+                    </div>
+                    <div class="media-body">
+                        
+                      <h4 class="media-heading user_name"><%= comment.user_name %></h4>
+                      <%= comment.body %>
+                      
+                      <p><small><a href="">Like</a> - <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
+                    </div> 
+                </div>
+            <% end %>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <h3 style="border-bottom: 1px solid #000000">Write Comment</h3>
+        <%= render 'comments/form', comment: @comment %>
+    </div>
+</div>
